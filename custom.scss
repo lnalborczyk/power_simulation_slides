@@ -1,0 +1,460 @@
+////////////////////////
+/*-- scss:defaults --*/
+////////////////////////
+
+////////////////////////////////////////////////////////////////////////////////
+// documentation
+// https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss
+// https://github.com/hakimel/reveal.js/blob/master/css/theme/template/theme.scss
+// https://github.com/hakimel/reveal.js/blob/master/css/theme/template/exposer.scss
+////////////////////////////////////////////////////////////////////////////////
+
+// importing fonts
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+
+// fonts
+$font-family-sans-serif: Montserrat, sans-serif !default;
+$font-family-monospace: Lucida Console, Monaco, monospace;
+$presentation-font-size-root: 20px;
+$presentation-font-smaller:	0.9em;
+$presentation-line-height: 1.5;
+$presentation-title-slide-text-align: center;
+$code-block-font-size: 0.8em;
+
+// colors
+$body-bg: #FFFFFF !default;
+$body-color: #272822 !default;
+$link-color: #1c5253 !default;
+$selection-bg: #26351c !default;
+$link-color-hover: lighten($link-color, 15%);
+$selection-bg: lighten($link-color, 25%);
+$selection-color: $body-bg;
+
+// headings
+$presentation-heading-font: Josefin Sans, sans-serif !default;
+$presentation-heading-font-weight: normal !default;
+$presentation-heading-font-size: 6em !default;
+$presentation-heading-color: #1c5253 !default;
+$presentation-h1-font-size: 3em !default;
+$presentation-h2-font-size: 2em !default;
+$presentation-h3-font-size: 1.5em !default;
+
+/////////////////////
+/*-- scss:rules --*/
+/////////////////////
+
+.reveal .title-slide {
+  background-color: #1c5253;
+  color: #FFFFFF;
+  font-size: 100%;
+  //text-align: center;
+  //top: 50%;
+  //left: 50%;
+  //width: 100%;
+  //position: absolute;
+  //transform: translate(-50%, -50%);
+}
+
+// hide the logo ONLY on the title slide
+// .reveal #title-slide .slide-logo,
+// .reveal section.title-slide .slide-logo {
+//   display: none !important;
+// }
+.reveal.no-logo img.slide-logo {
+  display: none !important;
+}
+body.no-logo img.slide-logo {
+  display: none !important;
+}
+
+// modify subtitles
+.reveal p.subtitle {
+  font-size: 150%;
+  text-align: center;
+}
+
+.reveal p.author {
+  font-size: 100%;
+  text-align: center;
+}
+
+.reveal h1 {
+  //font-size: 150%;
+  text-align: center;
+}
+
+// https://github.com/quarto-dev/quarto-cli/blob/main/src/resources/formats/revealjs/plugins/support/footer.css
+.reveal .slide-number {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9em !important;
+  color: #1c5253 !important;
+}
+
+.reveal .footer {
+  font-family: Montserrat, sans-serif;
+  font-size: 0.9em !important;
+  color: #1c5253;
+}
+
+//.MathJax { // all math
+//    font-size: 100% !important;
+//}
+
+.math.inline .MathJax  {
+  font-size: 100% !important;
+}
+
+.math.display .MathJax  {
+  font-size: 110% !important;
+}
+
+.reveal .slide a {
+  text-decoration: underline;
+}
+
+.reveal strong, .reveal b {
+  font-weight: bold;
+  color: #1c5253;
+}
+
+// modifying the blockquote
+// https://codepen.io/jimmycow/pen/LmjVaz
+
+.reveal .slide blockquote {
+  float: left;
+  font-size: 1.0em;
+  //width: 80%;
+  //margin: 10px auto;
+  color: #555555;
+  padding: 1.2em 30px 1.2em 75px;
+  border-left: 8px solid lighten($link-color, 20%);
+  line-height: 1.5;
+  position: relative;
+  background: #EDEDED;
+}
+
+/*.reveal .slide blockquote::before{
+  font-family: Arial;
+  content: "\201C";
+  color: lighten($link-color, 20%);
+  font-size: 4em;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+}*/
+
+// formatting the references slide (i.e., the last slide)
+.reveal .refs {
+    font-size: 80% !important;
+    line-height: 1.5em !important;
+    text-align: left;
+    text-indent: 0 !important;
+    // removing indentation
+    // padding-left: 0 !important;
+    // margin-left: 0 !important;
+}
+
+// https://www.emilhvitfeldt.com/post/slidecraft-code-output/
+// formatting the code output
+.reveal pre code {
+  background-color: #232525;
+  color: #A9B7C6;
+}
+
+// formatting the code block
+.reveal div.sourceCode pre code {
+  padding: 10px;
+}
+
+// formatting the code block
+.reveal div.sourceCode {
+  background-color: #232525;
+  border: none;
+  border-radius: 0px;
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
+}
+
+// Quarto/Reveals: increase max height for *output* blocks (not source)
+// New change on January 16, 2026
+.reveal .cell-output pre,
+.reveal .cell-output pre code {
+  max-height: 75vh;
+  overflow: auto;
+}
+
+// changing the colour of inline R code
+.reveal code {
+    color: $link-color;
+    font-family: $font-family-monospace;
+}
+
+/* fixing truncated footnote numbers in RevealJS slides --- */
+/* avoiding clipping at bottom of slide */
+.reveal .slides section {
+    // padding-bottom: 2em !important;
+    overflow: visible !important;
+}
+
+/* raising footnotes slightly above bottom edge */
+.reveal .footnotes,
+.reveal .footnotes p {
+  margin-bottom: 1.5em !important; // increase space below text
+  padding-bottom: 0.5em !important;
+}
+
+/* making sure superscript numbers are fully visible */
+.reveal sup,
+.reveal .footnote-ref {
+  line-height: 1 !important;
+  vertical-align: super !important;
+  position: relative;
+  top: -0.1em; // adjust if needed (try -0.2em, -0.05em, etc.)
+}
+
+/* new style environments */
+.reveal .slide blockquote {
+  width: 95%;
+  padding: .68em .92em;
+  margin: .6em auto;
+  border: 0;
+  border-left: 4px solid #1c5253;
+  background-color: #e8f2ef;
+  border-radius: 6px;
+  box-shadow: none;
+  font-size: 1.03em;
+  font-style: normal;
+}
+
+.reveal .slide blockquote p {
+  margin: .24em 0;
+}
+
+.reveal .slide blockquote .attribution {
+  font-size: .67em;
+  color: #536b6c;
+}
+
+.reveal .slide .takeaway {
+  border-left: 4px solid #d99d42;
+  background: #f8f6ee;
+  border-radius: 6px;
+  padding: 0.5em 0.8em;
+  margin: .5em 0 .25em;
+  font-size: 0.9em;
+}
+
+.reveal .slide .takeaway p {
+  margin: 0;
+}
+
+.reveal .slide .workflow ol {
+  padding: 0.5em 0.5em 0.25em 1.5em;
+  margin-left: 0.5em;
+  background: #f2f7f5;
+  border-left: 4px solid #1c5253;
+  border-radius: 6px;
+}
+
+.reveal .slide .workflow li {
+  margin-left: 0.5em;
+  margin-bottom: 0.25em;
+}
+
+/* Metric cards */
+.reveal .slide .metric {
+  background: #e9f1ee;
+  border: 1px solid #d5e5de;
+  border-radius: 9px;
+  padding: .55em .75em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 4.5em;
+  box-sizing: border-box;
+}
+
+/* Card labels */
+.reveal .slide .metric-label {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #1c5253;
+}
+
+/* Main mathematical value */
+.reveal .slide .metric-value {
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #1c5253;
+  margin: 0.1em 0;
+}
+
+/* Probability definition */
+.reveal .slide .metric-note {
+  font-size: 0.75em;
+  font-weight: 600;
+  color: #536b6c;
+}
+
+/* Vertical space between the two rows */
+.reveal .slide .metric-row + .metric-row {
+  margin-top: .5em;
+}
+
+/* Regular Quarto columns */
+.reveal .slides section .columns {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1em;
+  margin-top: .5em;
+  margin-bottom: .5em;
+}
+
+/* Individual columns */
+.reveal .slides section .columns > .column {
+  box-sizing: border-box;
+  padding: .3em;
+}
+
+/* Comparison columns */
+.reveal .slide .comparison-columns > .column {
+  background: #f3f7f5;
+  border: 1px solid #d5e5de;
+  border-radius: 9px;
+  padding: .65em .8em;
+  box-sizing: border-box;
+}
+
+/* Headings inside comparison columns */
+.reveal .slide .comparison-columns h3 {
+  color: #1c5253;
+  font-size: 1em;
+  font-weight: 600;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+}
+
+/* Lists inside comparison columns */
+.reveal .slide .comparison-columns ul {
+  margin-left: 0.9em;
+}
+
+.reveal .slide .comparison-columns li {
+  font-size: 0.9em;
+  line-height: 1.35;
+  margin-bottom: 0.5em;
+}
+
+.reveal .slide table {
+  font-size: 0.9em;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.reveal .slide table thead th {
+  background-color: #e4eeeb;
+  color: #1c5253;
+  font-weight: 700;
+}
+
+.reveal .slide table th,
+.reveal .slide table td {
+  padding: .33em .52em;
+}
+
+.reveal .slide table tr:nth-child(even) {
+  background: #f3f7f5;
+}
+
+.reveal .slide img.power-animation {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1000px;
+  max-height: 505px;
+  object-fit: contain;
+}
+
+
+
+
+
+
+
+
+
+
+
+/* Final slide */
+.reveal .slide .contact-slide {
+  align-items: center;
+  margin-top: 1.3em;
+}
+
+/* Social links */
+.reveal .slide .contact-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+}
+
+.reveal .slide .contact-links p {
+  margin: 0;
+}
+
+.reveal .slide .contact-links a.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 0.8em;
+
+  padding: 0.55em 0.8em;
+
+  background: #e9f1ee;
+  border: 1px solid #d5e5de;
+  border-radius: 9px;
+
+  color: #1c5253;
+  font-size: 0.85em;
+  font-weight: 500;
+  text-decoration: none;
+
+  transition: background 0.2s ease;
+}
+
+/* Link hover */
+.reveal .slide .contact-links a.contact-link:hover {
+  background: #d6ebe3;
+  color: #1c5253;
+}
+
+/* Social icons */
+.reveal .slide .contact-link i {
+  font-size: 1.35em;
+  width: 1.5em;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+/* QR code */
+.reveal .slide img.qr-code {
+  display: block;
+  width: 250px;
+  max-width: 85%;
+  height: auto;
+
+  margin: 0.5em auto;
+  padding: 0.4em;
+
+  background: white;
+  border: 1px solid #d5e5de;
+  border-radius: 9px;
+}
+
+/* Center the QR code column */
+.reveal .slide .contact-slide > .column:last-child {
+  text-align: center;
+}
